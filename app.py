@@ -12,7 +12,7 @@ app = Flask(__name__)
 CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 REDIRECT_URI = os.getenv("SPOTIFY_REDIRECT_URI")
 
-SCOPE = "user-read-private"
+SCOPE = "user-read-private playlist-read-private playlist-read-collaborative"
 
 sp_oauth = SpotifyPKCE(
     client_id=CLIENT_ID,
@@ -45,11 +45,29 @@ def callback():
     sp = spotipy.Spotify(auth=access_token)
 
     user = sp.current_user()
+    playlists = sp.current_user_playlists(limit=50)
+
+    playlist_list = ""
+
+    for playlist in playlists["items"]:
+        playlist_list += f"""
+            <li>
+                {playlist["name"]}
+                — {playlist["items"]["total"]} tracks
+            </li>
+        """
 
     return f"""
         <h1>Spotify Music Analyzer</h1>
+
         <p>Conectado correctamente.</p>
         <p>Usuario: {user["display_name"]}</p>
+
+        <h2>Mis playlists</h2>
+
+        <ul>
+            {playlist_list}
+        </ul>
     """
 
 
