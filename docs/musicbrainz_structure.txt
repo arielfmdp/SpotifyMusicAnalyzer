@@ -1,0 +1,690 @@
+SPOTIFY MUSIC ANALYZER — INSPECCIÓN PROFUNDA DE MUSICBRAINZ
+====================================================================================================
+
+Registros analizados: 31
+Rutas descubiertas: 79
+
+
+count
+  Registros : 31/31 (100.0%)
+  Tipos     : int (31)
+  Ejemplos  :
+    1
+    3
+    1
+    1
+    1
+
+created
+  Registros : 31/31 (100.0%)
+  Tipos     : str (31)
+  Ejemplos  :
+    '2026-08-23T23:21:02.403Z'
+    '2026-08-23T23:23:44.959Z'
+    '2026-08-23T23:23:51.658Z'
+    '2026-08-23T23:23:53.779Z'
+    '2026-08-23T23:24:15.075Z'
+
+offset
+  Registros : 31/31 (100.0%)
+  Tipos     : int (31)
+  Ejemplos  :
+    0
+    0
+    0
+    0
+    0
+
+recordings
+  Registros : 31/31 (100.0%)
+  Tipos     : list (62)
+
+recordings.artist-credit
+  Registros : 31/31 (100.0%)
+  Tipos     : list (68)
+
+recordings.artist-credit-id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (34)
+  Ejemplos  :
+    '8d2c4bdd-b305-3ece-b7ca-fba195200297'
+    '550fa106-e13a-3c97-b784-ed93667e1f71'
+    '550fa106-e13a-3c97-b784-ed93667e1f71'
+    '550fa106-e13a-3c97-b784-ed93667e1f71'
+    '83309b02-cae8-3b90-8182-7859feb15050'
+
+recordings.artist-credit.artist
+  Registros : 31/31 (100.0%)
+  Tipos     : dict (38)
+
+recordings.artist-credit.artist.aliases
+  Registros : 18/31 (58.1%)
+  Tipos     : list (42)
+
+recordings.artist-credit.artist.aliases.begin-date
+  Registros : 18/31 (58.1%)
+  Tipos     : NoneType (60), str (1)
+  Ejemplos  :
+    None
+    None
+    '1985'
+    None
+    None
+
+recordings.artist-credit.artist.aliases.end-date
+  Registros : 18/31 (58.1%)
+  Tipos     : NoneType (60), str (1)
+  Ejemplos  :
+    None
+    None
+    '1988'
+    None
+    None
+
+recordings.artist-credit.artist.aliases.locale
+  Registros : 18/31 (58.1%)
+  Tipos     : str (18), NoneType (43)
+  Ejemplos  :
+    'ko'
+    None
+    None
+    'en'
+    'en'
+
+recordings.artist-credit.artist.aliases.name
+  Registros : 18/31 (58.1%)
+  Tipos     : str (61)
+  Ejemplos  :
+    '드림 씨어터'
+    'DreamTheater'
+    'Majesty'
+    'Tasmin Angela Archer'
+    'Tasmin Angela Archer'
+
+recordings.artist-credit.artist.aliases.primary
+  Registros : 18/31 (58.1%)
+  Tipos     : bool (12), NoneType (49)
+  Ejemplos  :
+    True
+    None
+    None
+    None
+    None
+
+recordings.artist-credit.artist.aliases.sort-name
+  Registros : 18/31 (58.1%)
+  Tipos     : str (61)
+  Ejemplos  :
+    '드림 씨어터'
+    'DreamTheater'
+    'Majesty'
+    'Archer, Tasmin Angela'
+    'Archer, Tasmin Angela'
+
+recordings.artist-credit.artist.aliases.type
+  Registros : 18/31 (58.1%)
+  Tipos     : str (22), NoneType (39)
+  Ejemplos  :
+    'Artist name'
+    None
+    'Artist name'
+    'Legal name'
+    'Legal name'
+
+recordings.artist-credit.artist.aliases.type-id
+  Registros : 12/31 (38.7%)
+  Tipos     : str (22)
+  Ejemplos  :
+    '894afba6-2816-3c24-8072-eadb66bd04bc'
+    '894afba6-2816-3c24-8072-eadb66bd04bc'
+    'd4dcd0c0-b341-3612-a332-c0ce797b25cf'
+    'd4dcd0c0-b341-3612-a332-c0ce797b25cf'
+    'd4dcd0c0-b341-3612-a332-c0ce797b25cf'
+
+recordings.artist-credit.artist.disambiguation
+  Registros : 8/31 (25.8%)
+  Tipos     : str (10)
+  Ejemplos  :
+    'British singer-songwriter'
+    'British singer-songwriter'
+    'British singer-songwriter'
+    'alternative country band, 1997–2007'
+    'English progressive rock band'
+
+recordings.artist-credit.artist.id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (38)
+  Ejemplos  :
+    '28503ab7-8bf2-4666-a7bd-2644bfc7cb1d'
+    '9f5d1063-b9cc-4fdf-b4de-588fa1adf42d'
+    '44ecd2ac-a5b9-4b64-8edb-f3c76a5fa439'
+    '44ecd2ac-a5b9-4b64-8edb-f3c76a5fa439'
+    '44ecd2ac-a5b9-4b64-8edb-f3c76a5fa439'
+
+recordings.artist-credit.artist.name
+  Registros : 31/31 (100.0%)
+  Tipos     : str (38)
+  Ejemplos  :
+    'Dream Theater'
+    'The Octavarium Orchestra'
+    'Tasmin Archer'
+    'Tasmin Archer'
+    'Tasmin Archer'
+
+recordings.artist-credit.artist.sort-name
+  Registros : 31/31 (100.0%)
+  Tipos     : str (38)
+  Ejemplos  :
+    'Dream Theater'
+    'Octavarium Orchestra, The'
+    'Archer, Tasmin'
+    'Archer, Tasmin'
+    'Archer, Tasmin'
+
+recordings.artist-credit.joinphrase
+  Registros : 4/31 (12.9%)
+  Tipos     : str (4)
+  Ejemplos  :
+    ' with '
+    ' feat. '
+    ' feat. '
+    ' feat. '
+
+recordings.artist-credit.name
+  Registros : 31/31 (100.0%)
+  Tipos     : str (38)
+  Ejemplos  :
+    'Dream Theater'
+    'the Octavarium Orchestra'
+    'Tasmin Archer'
+    'Tasmin Archer'
+    'Tasmin Archer'
+
+recordings.disambiguation
+  Registros : 2/31 (6.5%)
+  Tipos     : str (2)
+  Ejemplos  :
+    'live, 2006-04-01: Radio City Music Hall, New York City, NY, USA'
+    'live: The Mountain Music Lounge, Seattle, WA, USA'
+
+recordings.first-release-date
+  Registros : 31/31 (100.0%)
+  Tipos     : str (34)
+  Ejemplos  :
+    '2006-08-25'
+    '1996'
+    '2023-08-25'
+    '1992-08-31'
+    '1999-01-01'
+
+recordings.id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (34)
+  Ejemplos  :
+    'e7c0a0ec-b3c4-4321-8eae-e730e0bf0c73'
+    '0c0453a8-94ef-4039-92ec-241933ca3eb5'
+    '063023a0-dc22-4223-bcfd-a1918f30bc32'
+    '810d8633-c17b-40e0-9f8c-80f198722aba'
+    'efbd6542-ee9a-4feb-ab3c-55ffa44b7cdf'
+
+recordings.isrcs
+  Registros : 31/31 (100.0%)
+  Tipos     : list (68)
+
+recordings.length
+  Registros : 31/31 (100.0%)
+  Tipos     : int (34)
+  Ejemplos  :
+    2482946
+    258933
+    258933
+    280800
+    244293
+
+recordings.releases
+  Registros : 31/31 (100.0%)
+  Tipos     : list (68)
+
+recordings.releases.artist-credit
+  Registros : 24/31 (77.4%)
+  Tipos     : list (1138)
+
+recordings.releases.artist-credit-id
+  Registros : 24/31 (77.4%)
+  Tipos     : str (569)
+  Ejemplos  :
+    'b052fd51-be34-3388-a0a8-bef037e6b662'
+    'b052fd51-be34-3388-a0a8-bef037e6b662'
+    'b052fd51-be34-3388-a0a8-bef037e6b662'
+    '949a7fd5-fe73-3e8f-922e-01ff4ca958f7'
+    '949a7fd5-fe73-3e8f-922e-01ff4ca958f7'
+
+recordings.releases.artist-credit.artist
+  Registros : 24/31 (77.4%)
+  Tipos     : dict (576)
+
+recordings.releases.artist-credit.artist.disambiguation
+  Registros : 15/31 (48.4%)
+  Tipos     : str (333)
+  Ejemplos  :
+    'add compilations to this artist'
+    'add compilations to this artist'
+    'add compilations to this artist'
+    'alternative country band, 1997–2007'
+    'add compilations to this artist'
+
+recordings.releases.artist-credit.artist.id
+  Registros : 24/31 (77.4%)
+  Tipos     : str (576)
+  Ejemplos  :
+    '28503ab7-8bf2-4666-a7bd-2644bfc7cb1d'
+    '28503ab7-8bf2-4666-a7bd-2644bfc7cb1d'
+    '28503ab7-8bf2-4666-a7bd-2644bfc7cb1d'
+    '89ad4ac3-39f7-470e-963a-56509c546377'
+    '89ad4ac3-39f7-470e-963a-56509c546377'
+
+recordings.releases.artist-credit.artist.name
+  Registros : 24/31 (77.4%)
+  Tipos     : str (576)
+  Ejemplos  :
+    'Dream Theater'
+    'Dream Theater'
+    'Dream Theater'
+    'Various Artists'
+    'Various Artists'
+
+recordings.releases.artist-credit.artist.sort-name
+  Registros : 24/31 (77.4%)
+  Tipos     : str (576)
+  Ejemplos  :
+    'Dream Theater'
+    'Dream Theater'
+    'Dream Theater'
+    'Various Artists'
+    'Various Artists'
+
+recordings.releases.artist-credit.joinphrase
+  Registros : 5/31 (16.1%)
+  Tipos     : str (7)
+  Ejemplos  :
+    ' feat. '
+    ' feat. '
+    ' feat. '
+    ' feat. '
+    ' feat. '
+
+recordings.releases.artist-credit.name
+  Registros : 24/31 (77.4%)
+  Tipos     : str (576)
+  Ejemplos  :
+    'Dream Theater'
+    'Dream Theater'
+    'Dream Theater'
+    'Various Artists'
+    'Various Artists'
+
+recordings.releases.count
+  Registros : 31/31 (100.0%)
+  Tipos     : int (675)
+  Ejemplos  :
+    1
+    3
+    3
+    4
+    4
+
+recordings.releases.country
+  Registros : 30/31 (96.8%)
+  Tipos     : str (604)
+  Ejemplos  :
+    'DE'
+    'US'
+    'NL'
+    'XE'
+    'IE'
+
+recordings.releases.date
+  Registros : 30/31 (96.8%)
+  Tipos     : str (604)
+  Ejemplos  :
+    '2006-08-25'
+    '2006-08-29'
+    '2014-02-10'
+    '2017-08-04'
+    '2019-03-29'
+
+recordings.releases.disambiguation
+  Registros : 22/31 (71.0%)
+  Tipos     : str (104)
+  Ejemplos  :
+    '4CD, Rhino'
+    '120 Original Hits'
+    '117 Original Hits'
+    'deluxe edition'
+    'cream vinyl'
+
+recordings.releases.id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (675)
+  Ejemplos  :
+    '8ca52a52-a5cc-4800-9eef-0aaf57c5b4ec'
+    '6a4a3446-2005-3533-bfb3-631b0be76eff'
+    '76199942-ccf6-41d4-bad4-eadae9bd59be'
+    '0a0f0be5-3691-4a0a-b8ab-b6d60988831f'
+    '1153e0d9-c2e8-4fa9-a5d7-0514cd4d149b'
+
+recordings.releases.media
+  Registros : 31/31 (100.0%)
+  Tipos     : list (1350)
+
+recordings.releases.media.format
+  Registros : 31/31 (100.0%)
+  Tipos     : str (664)
+  Ejemplos  :
+    'Digital Media'
+    'CD'
+    'CD'
+    'CD'
+    'Digital Media'
+
+recordings.releases.media.id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (675)
+  Ejemplos  :
+    '0ef9d3e2-d0a9-33dd-ad09-3c32cf578281'
+    'f20c9d16-5292-30d9-8b04-d15fc5d6eedc'
+    '504f33a5-4fd2-333c-ad77-ea2f8b0dd9dc'
+    'd39ea638-2804-4ceb-ae1a-9ce3aa832eff'
+    '6c8197dc-fe24-3727-b1b5-08c4a901d2f2'
+
+recordings.releases.media.position
+  Registros : 31/31 (100.0%)
+  Tipos     : int (675)
+  Ejemplos  :
+    1
+    2
+    2
+    4
+    2
+
+recordings.releases.media.track
+  Registros : 31/31 (100.0%)
+  Tipos     : list (1350)
+
+recordings.releases.media.track-count
+  Registros : 31/31 (100.0%)
+  Tipos     : int (675)
+  Ejemplos  :
+    14
+    4
+    4
+    18
+    20
+
+recordings.releases.media.track-offset
+  Registros : 31/31 (100.0%)
+  Tipos     : int (675)
+  Ejemplos  :
+    8
+    0
+    0
+    8
+    3
+
+recordings.releases.media.track.id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (675)
+  Ejemplos  :
+    '2d57d07a-4414-407f-86c6-67183c4c930a'
+    '48d7d674-d9c6-319c-bfe1-c2ffab00170d'
+    'e5b27a47-e816-3968-b4ad-67ddb57d5e4b'
+    'e9d04d86-8ab0-4043-8fa0-95296d358212'
+    '5af223ca-ebec-443b-9d89-73f107d47659'
+
+recordings.releases.media.track.length
+  Registros : 31/31 (100.0%)
+  Tipos     : int (661)
+  Ejemplos  :
+    2482946
+    2493466
+    2493466
+    258933
+    258933
+
+recordings.releases.media.track.number
+  Registros : 31/31 (100.0%)
+  Tipos     : str (675)
+  Ejemplos  :
+    '9'
+    '1'
+    '1'
+    '9'
+    '4'
+
+recordings.releases.media.track.title
+  Registros : 31/31 (100.0%)
+  Tipos     : str (675)
+  Ejemplos  :
+    'Six Degrees of Inner Turbulence'
+    'Six Degrees of Inner Turbulence'
+    'Six Degrees of Inner Turbulence'
+    'Sleeping Satellite'
+    'Sleeping Satellite'
+
+recordings.releases.release-events
+  Registros : 30/31 (96.8%)
+  Tipos     : list (1208)
+
+recordings.releases.release-events.area
+  Registros : 30/31 (96.8%)
+  Tipos     : dict (2216)
+
+recordings.releases.release-events.area.id
+  Registros : 30/31 (96.8%)
+  Tipos     : str (2216)
+  Ejemplos  :
+    '85752fda-13c4-31a3-bee5-0e5cb1f51dad'
+    '8a754a16-0027-3a29-b6d7-2b40ea0481ed'
+    '489ce91b-6658-3307-9877-795b68554c98'
+    '89a675c2-3e37-3518-b83c-418bad59a85a'
+    '390b05d4-11ec-3bce-a343-703a366b34a5'
+
+recordings.releases.release-events.area.iso-3166-1-codes
+  Registros : 30/31 (96.8%)
+  Tipos     : list (4432)
+
+recordings.releases.release-events.area.name
+  Registros : 30/31 (96.8%)
+  Tipos     : str (2216)
+  Ejemplos  :
+    'Germany'
+    'United Kingdom'
+    'United States'
+    'Europe'
+    'Ireland'
+
+recordings.releases.release-events.area.sort-name
+  Registros : 30/31 (96.8%)
+  Tipos     : str (2216)
+  Ejemplos  :
+    'Germany'
+    'United Kingdom'
+    'United States'
+    'Europe'
+    'Ireland'
+
+recordings.releases.release-events.date
+  Registros : 30/31 (96.8%)
+  Tipos     : str (2216)
+  Ejemplos  :
+    '2006-08-25'
+    '2006-09-04'
+    '2006-08-29'
+    '2017-08-04'
+    '2019-03-29'
+
+recordings.releases.release-group
+  Registros : 31/31 (100.0%)
+  Tipos     : dict (675)
+
+recordings.releases.release-group.disambiguation
+  Registros : 6/31 (19.4%)
+  Tipos     : str (26)
+  Ejemplos  :
+    '2023 version'
+    '2021 version'
+    '10th Anniversary'
+    'Portugal'
+    'Russian bootleg'
+
+recordings.releases.release-group.id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (675)
+  Ejemplos  :
+    '6fd0112d-7b32-3543-b662-63eea1104dc9'
+    '6fd0112d-7b32-3543-b662-63eea1104dc9'
+    '6fd0112d-7b32-3543-b662-63eea1104dc9'
+    '0e874bef-0b8d-4c46-967d-0e41b5633449'
+    'ffe432bb-db1e-4fa5-8a88-de002663f28e'
+
+recordings.releases.release-group.primary-type
+  Registros : 31/31 (100.0%)
+  Tipos     : str (673)
+  Ejemplos  :
+    'Album'
+    'Album'
+    'Album'
+    'Album'
+    'Album'
+
+recordings.releases.release-group.primary-type-id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (673)
+  Ejemplos  :
+    'f529b476-6e62-324f-b0aa-1f3e33d313fc'
+    'f529b476-6e62-324f-b0aa-1f3e33d313fc'
+    'f529b476-6e62-324f-b0aa-1f3e33d313fc'
+    'f529b476-6e62-324f-b0aa-1f3e33d313fc'
+    'f529b476-6e62-324f-b0aa-1f3e33d313fc'
+
+recordings.releases.release-group.secondary-type-ids
+  Registros : 16/31 (51.6%)
+  Tipos     : list (702)
+
+recordings.releases.release-group.secondary-types
+  Registros : 16/31 (51.6%)
+  Tipos     : list (702)
+
+recordings.releases.release-group.title
+  Registros : 31/31 (100.0%)
+  Tipos     : str (675)
+  Ejemplos  :
+    'Score: 20th Anniversary World Tour'
+    'Score: 20th Anniversary World Tour'
+    'Score: 20th Anniversary World Tour'
+    'Love Songs: The Collection'
+    'Magic 90s'
+
+recordings.releases.release-group.type-id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (673)
+  Ejemplos  :
+    '6fd474e2-6b58-3102-9d17-d6f7eb7da0a0'
+    '6fd474e2-6b58-3102-9d17-d6f7eb7da0a0'
+    '6fd474e2-6b58-3102-9d17-d6f7eb7da0a0'
+    'dd2a21e1-0c00-3729-a7a0-de60b84eb5d1'
+    'dd2a21e1-0c00-3729-a7a0-de60b84eb5d1'
+
+recordings.releases.status
+  Registros : 31/31 (100.0%)
+  Tipos     : str (663)
+  Ejemplos  :
+    'Official'
+    'Official'
+    'Official'
+    'Official'
+    'Official'
+
+recordings.releases.status-id
+  Registros : 31/31 (100.0%)
+  Tipos     : str (663)
+  Ejemplos  :
+    '4e304316-386d-3409-af2e-78857eec5cfe'
+    '4e304316-386d-3409-af2e-78857eec5cfe'
+    '4e304316-386d-3409-af2e-78857eec5cfe'
+    '4e304316-386d-3409-af2e-78857eec5cfe'
+    '4e304316-386d-3409-af2e-78857eec5cfe'
+
+recordings.releases.title
+  Registros : 31/31 (100.0%)
+  Tipos     : str (675)
+  Ejemplos  :
+    'Score: 20th Anniversary World Tour Live With the Octavarium Orchestra'
+    'Score: 20th Anniversary World Tour'
+    'Score: 20th Anniversary World Tour'
+    'Love Songs: The Collection'
+    'Magic 90s'
+
+recordings.releases.track-count
+  Registros : 31/31 (100.0%)
+  Tipos     : int (675)
+  Ejemplos  :
+    14
+    14
+    14
+    72
+    80
+
+recordings.score
+  Registros : 31/31 (100.0%)
+  Tipos     : int (34)
+  Ejemplos  :
+    100
+    100
+    100
+    100
+    100
+
+recordings.tags
+  Registros : 15/31 (48.4%)
+  Tipos     : list (32)
+
+recordings.tags.count
+  Registros : 15/31 (48.4%)
+  Tipos     : int (115)
+  Ejemplos  :
+    1
+    3
+    1
+    1
+    1
+
+recordings.tags.name
+  Registros : 15/31 (48.4%)
+  Tipos     : str (115)
+  Ejemplos  :
+    'metal'
+    'pop'
+    'ballad'
+    'adult contemporary'
+    'rock'
+
+recordings.title
+  Registros : 31/31 (100.0%)
+  Tipos     : str (34)
+  Ejemplos  :
+    'Six Degrees of Inner Turbulence'
+    'Sleeping Satellite'
+    'Sleeping Satellite'
+    'Sleeping Satellite'
+    'Goodnight Moon'
+
+recordings.video
+  Registros : 31/31 (100.0%)
+  Tipos     : NoneType (34)
+  Ejemplos  :
+    None
+    None
+    None
+    None
+    None

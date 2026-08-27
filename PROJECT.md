@@ -192,6 +192,58 @@ La base local deberá distinguir entre datos importados desde Spotify y datos ge
 
 ---
 
+## Estado actual del desarrollo
+
+### Etapa actual
+
+**Enriquecimiento musical de los datos importados desde Spotify.**
+
+La etapa de importación y estructuración inicial de la biblioteca de Spotify ya fue completada. El proyecto se encuentra actualmente en la transición hacia el enriquecimiento de los tracks mediante fuentes musicales externas, principalmente MusicBrainz.
+
+### Estado de la base de datos
+
+La base local `data/spotify_music.db` contiene actualmente:
+
+- **5.493 tracks**
+- **3.090 álbumes**
+- **1.754 artistas**
+- **6.550 relaciones track-artista**
+- **5.493 tracks con ISRC**
+
+La base SQLite se considera un artefacto local generado durante el proceso de importación y enriquecimiento, por lo que no forma parte del repositorio Git. Puede reconstruirse a partir del código y de las fuentes de datos.
+
+### Componentes desarrollados
+
+Actualmente se encuentran desarrollados, entre otros, los siguientes componentes:
+
+- `app.py`
+- `database.py`
+- `database_stats.py`
+- `import_spotify.py`
+- `query_database.py`
+- `create_enrichment_table.py`
+- `analyze_musicbrainz_entities.py`
+
+También se conservan herramientas de inspección, scripts experimentales y pruebas utilizadas durante la investigación y el desarrollo en `tools/` y `tests/`.
+
+La documentación auxiliar se conserva en `docs/`.
+
+### Investigación de MusicBrainz
+
+Ya se realizaron pruebas y análisis sobre la estructura y disponibilidad de información de MusicBrainz.
+
+El ISRC se identificó como un identificador especialmente útil para relacionar los tracks de Spotify con registros de MusicBrainz.
+
+Los resultados de esta investigación y las herramientas utilizadas se conservan en el proyecto para permitir revisar las decisiones tomadas durante esta etapa.
+
+### Próximo objetivo
+
+Continuar la implementación del **enriquecimiento musical**, utilizando los identificadores disponibles para obtener y almacenar información adicional de los tracks y sus entidades relacionadas.
+
+A partir de esta etapa se continuará definiendo la estructura de datos necesaria para las posteriores fases de análisis, clasificación y scoring.
+
+---
+
 ## 9. Sincronización con Spotify
 
 La sincronización será una característica fundamental del sistema.
@@ -481,3 +533,36 @@ Spotify Music Analyzer será considerado exitoso cuando permita al usuario trans
 * y extensible hacia técnicas avanzadas de análisis y machine learning.
 
 El objetivo final no es simplemente "tener una base de datos de Spotify", sino disponer de una **herramienta personal de inteligencia y organización musical**.
+
+
+## Estado actual
+
+Checkpoint: 2026-08-24
+
+- Integración básica con Spotify implementada.
+- Base SQLite creada en data/spotify_music.db.
+- Modelo inicial de datos implementado.
+- Importación inicial de biblioteca completada.
+- 5.493 tracks importados.
+- 3.090 álbumes.
+- 1.754 artistas.
+- 6.550 relaciones track-artista.
+- Todos los tracks importados disponen de ISRC.
+- Próxima etapa: enriquecimiento musical externo de los tracks.
+- Spotify audio_features/audio_analysis no se consideran dependencias disponibles.
+- MusicBrainz forma parte del pipeline de enriquecimiento.
+- Soundcharts queda como fuente complementaria para casos no resueltos.
+
+
+
+## Estado del pipeline
+Spotify
+  ↓
+Importación local              ← COMPLETADO
+  ↓
+Enriquecimiento MusicBrainz    ← EN DESARROLLO
+  ↓
+Fuentes musicales adicionales  ← PENDIENTE
+  ↓
+Análisis / clasificación       ← PENDIENTE
+

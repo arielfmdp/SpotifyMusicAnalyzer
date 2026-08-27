@@ -4,6 +4,7 @@ import spotipy
 from dotenv import load_dotenv
 from flask import Flask, redirect, request
 from spotipy.oauth2 import SpotifyPKCE
+from pprint import pformat
 
 load_dotenv()
 
@@ -12,7 +13,12 @@ app = Flask(__name__)
 CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 REDIRECT_URI = os.getenv("SPOTIFY_REDIRECT_URI")
 
-SCOPE = "user-read-private playlist-read-private playlist-read-collaborative"
+SCOPE = (
+    "user-read-private "
+    "user-library-read "
+    "playlist-read-private "
+    "playlist-read-collaborative"
+)
 
 sp_oauth = SpotifyPKCE(
     client_id=CLIENT_ID,
@@ -45,7 +51,12 @@ def callback():
     sp = spotipy.Spotify(auth=access_token)
 
     user = sp.current_user()
+    saved_tracks = sp.current_user_saved_tracks(limit=1)
+    saved_tracks_total = saved_tracks["total"]
+    first_item = saved_tracks["items"][0]
+    first_track = first_item["track"]
     playlists = sp.current_user_playlists(limit=50)
+    playlist_items = playlists["items"]
 
     playlist_list = ""
 
@@ -62,6 +73,9 @@ def callback():
 
         <p>Conectado correctamente.</p>
         <p>Usuario: {user["display_name"]}</p>
+        <p>Canciones guardadas: {saved_tracks_total}</p>
+        <pre>primer track: {pformat(first_track)}</pre>
+        <pre>primer item: {pformat(first_item)}</pre>
 
         <h2>Mis playlists</h2>
 
