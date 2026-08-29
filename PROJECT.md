@@ -554,13 +554,48 @@ Checkpoint: 2026-08-24
 - Soundcharts queda como fuente complementaria para casos no resueltos.
 
 
+### Enriquecimiento musical — estado
+
+La etapa MusicBrainz v1 — adquisición + normalización quedó completada y validada.
+
+Se mantiene el JSON original de MusicBrainz en track_sources.data_json y se
+dispone de las tablas normalizadas correspondientes a recordings, artists,
+aliases, tags y relaciones con tracks.
+
+Se evaluó Last.fm como fuente secundaria de metadata mediante su API.
+
+Las pruebas realizadas sobre una muestra local de tracks demostraron una
+cobertura elevada para artista, listeners y playcount, y una cobertura
+razonable para álbum, duración y MBID. Last.fm queda incorporado como fuente
+secundaria, manteniendo siempre la procedencia de sus datos.
+
+Los tags de track de Last.fm fueron evaluados mediante track.getTopTags sobre
+50 tracks. La cobertura observada fue insuficiente (2/50), por lo que no se
+utilizará Last.fm como fuente sistemática de tags de tracks.
+
+Los tags de artista fueron evaluados mediante artist.getTopTags sobre 50
+artistas únicos. Se obtuvieron tags en 15/50 casos (30 %). Esta cobertura se
+considera suficiente para utilizar Last.fm como fuente secundaria opcional de
+tags de artista, sin considerar su ausencia como error.
+
+Las estadísticas listeners y playcount se consideran datos de Last.fm y
+deberán conservar su procedencia y fecha de adquisición.
+
+No se incorporará análisis acústico de archivos de audio en esta fase del
+proyecto. El enriquecimiento se concentrará exclusivamente en metadata
+proveniente de fuentes externas.
+
+La búsqueda de nuevas fuentes se realizará únicamente cuando exista una
+necesidad concreta de metadata que las fuentes actuales no cubran
+adecuadamente.
+
 
 ## Estado del pipeline
 Spotify
   ↓
 Importación local              ← COMPLETADO
   ↓
-Enriquecimiento MusicBrainz    ← EN DESARROLLO
+Enriquecimiento MusicBrainz    ← COMPLETADO
   ↓
 Fuentes musicales adicionales  ← PENDIENTE
   ↓
