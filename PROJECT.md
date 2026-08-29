@@ -156,7 +156,7 @@ El sistema podrá trabajar inicialmente con entidades como:
 * Playlist
 * Playlist Item
 * User
-* Audio/track features disponibles
+* Metadata musical enriquecida
 * Metadata
 * Classification
 * Classification Rule
@@ -196,9 +196,14 @@ La base local deberá distinguir entre datos importados desde Spotify y datos ge
 
 ### Etapa actual
 
-**Enriquecimiento musical de los datos importados desde Spotify.**
+**Enriquecimiento musical mediante fuentes externas de metadata.**
 
-La etapa de importación y estructuración inicial de la biblioteca de Spotify ya fue completada. El proyecto se encuentra actualmente en la transición hacia el enriquecimiento de los tracks mediante fuentes musicales externas, principalmente MusicBrainz.
+La importación y estructuración inicial de la biblioteca de Spotify está completada. La etapa de enriquecimiento comenzó con MusicBrainz y se amplió posteriormente con Last.fm.
+
+El objetivo de esta etapa es complementar los datos de Spotify mediante metadata musical disponible en fuentes externas gratuitas, manteniendo estrictamente la procedencia de cada fuente.
+
+No se incorporará análisis acústico de archivos de audio en esta fase. El enriquecimiento se limita a metadata obtenida mediante APIs y otras fuentes externas.
+
 
 ### Estado de la base de datos
 
@@ -228,19 +233,87 @@ También se conservan herramientas de inspección, scripts experimentales y prue
 
 La documentación auxiliar se conserva en `docs/`.
 
-### Investigación de MusicBrainz
+### MusicBrainz v1 — adquisición y normalización
 
-Ya se realizaron pruebas y análisis sobre la estructura y disponibilidad de información de MusicBrainz.
+La etapa **MusicBrainz v1 — adquisición + normalización** fue completada, validada e incorporada al repositorio.
 
-El ISRC se identificó como un identificador especialmente útil para relacionar los tracks de Spotify con registros de MusicBrainz.
+El ISRC se utiliza como identificador principal para relacionar los tracks de Spotify con registros de MusicBrainz.
 
-Los resultados de esta investigación y las herramientas utilizadas se conservan en el proyecto para permitir revisar las decisiones tomadas durante esta etapa.
+La información original obtenida de MusicBrainz permanece conservada en `track_sources.data_json`.
+
+Se implementó y validó `normalize_musicbrainz.py`, que genera las siguientes estructuras normalizadas:
+
+* `mb_recordings`
+* `mb_artists`
+* `mb_recording_artists`
+* `mb_artist_aliases`
+* `mb_tags`
+* `mb_recording_tags`
+* `track_musicbrainz`
+
+La normalización fue validada sobre una muestra de 51 tracks. Se comprobó además que las relaciones múltiples se conservan correctamente, ya que un track de Spotify puede estar relacionado con varios recordings de MusicBrainz.
+
+Los releases de MusicBrainz no se normalizan en esta etapa y permanecen en el JSON original.
+
+La etapa fue cerrada formalmente mediante commit y push al repositorio.
+
+
+### Last.fm — fuente secundaria
+
+Last.fm fue evaluado como fuente secundaria de metadata mediante su API, utilizando una API key almacenada localmente y excluida del repositorio.
+
+Las respuestas obtenidas mediante `track.getInfo` se conservan en `track_sources.data_json`, manteniendo la procedencia de los datos.
+
+Las pruebas realizadas sobre una muestra de 73 tracks mostraron una cobertura elevada para artista, listeners y playcount, y una cobertura parcial para álbum, duración y MBID.
+
+Last.fm queda incorporado como fuente secundaria de enriquecimiento, sin sustituir los datos provenientes de Spotify ni de MusicBrainz.
+
+#### Tags de tracks
+
+Se evaluó `track.getTopTags`.
+
+Las pruebas mediante MBID presentaron una cobertura insuficiente. Posteriormente se probó la modalidad documentada mediante `artist + track` sobre una muestra de 50 tracks.
+
+El resultado fue:
+
+* 2 tracks con tags;
+* 48 tracks sin tags;
+* cobertura observada: **4 %**.
+
+Por lo tanto, Last.fm no se considera una fuente sistemática de tags de tracks. No obstante, los tags obtenidos se podrán conservar y utilizar cuando estén disponibles.
+
+#### Tags de artistas
+
+Se evaluó `artist.getTopTags` sobre una muestra de 50 artistas únicos.
+
+La prueba mostró:
+
+* 15 artistas con tags;
+* 35 artistas sin tags;
+* cobertura observada: **30 %**.
+
+La cobertura se considera suficiente para utilizar Last.fm como fuente secundaria y opcional de tags de artistas.
+
+La prueba mostró además que los resultados con tags correspondieron a las consultas realizadas mediante el parámetro `artist`, mientras que las consultas mediante MBID no devolvieron tags en la muestra analizada.
+
+Por decisión del proyecto, para tags de artistas se utilizará `artist.getTopTags` mediante nombre de artista y, para tags de tracks, `track.getTopTags` mediante `artist + track`.
+
+La ausencia de tags en Last.fm no se considera un error y no impedirá el enriquecimiento mediante otras fuentes.
+
+Los datos de Last.fm permanecerán identificados por su fuente y no se mezclarán silenciosamente con datos provenientes de otras fuentes.
+
 
 ### Próximo objetivo
 
-Continuar la implementación del **enriquecimiento musical**, utilizando los identificadores disponibles para obtener y almacenar información adicional de los tracks y sus entidades relacionadas.
+Continuar el enriquecimiento musical identificando únicamente los atributos de metadata que todavía resulten necesarios para las funcionalidades previstas de búsqueda, filtrado, organización, catalogación, clasificación y análisis.
 
-A partir de esta etapa se continuará definiendo la estructura de datos necesaria para las posteriores fases de análisis, clasificación y scoring.
+Las nuevas fuentes deberán justificarse por una necesidad concreta de metadata y evaluarse por cobertura, calidad, disponibilidad, límites de uso, coste y facilidad de automatización.
+
+Se priorizarán fuentes gratuitas y accesibles mediante API.
+
+La arquitectura de enriquecimiento mantendrá separada la procedencia de cada fuente y utilizará el JSON raw únicamente cuando conserve información potencialmente útil que no haya sido normalizada.
+
+No se incorporará una capa de análisis acústico de audio en esta fase.
 
 ---
 
