@@ -205,6 +205,66 @@ El objetivo de esta etapa es complementar los datos de Spotify mediante metadata
 No se incorporará análisis acústico de archivos de audio en esta fase. El enriquecimiento se limita a metadata obtenida mediante APIs y otras fuentes externas.
 
 
+### MusicBrainz — Genre Enrichment and Metadata Model Validation
+
+The MusicBrainz genre enrichment stage has been implemented and validated.
+
+#### Genre model
+
+The database now includes the following normalized MusicBrainz genre structures:
+
+* `mb_genres`
+* `mb_artist_genres`
+* `mb_artist_sources`
+
+MusicBrainz artist responses are preserved in `mb_artist_sources.data_json`.
+
+Genre information is obtained primarily from MusicBrainz artist genres and is combined with recording-level MusicBrainz tags/genres.
+
+#### Validation results
+
+The implemented strategy was tested against 33 distinct MusicBrainz recordings associated with the current Spotify dataset.
+
+Results:
+
+* 33 / 33 recordings had recording-level or artist-level genre information.
+* 16 / 33 recordings had recording-level MusicBrainz genre/tag information.
+* 33 / 33 recordings had at least one associated artist with genre information.
+* Final genre coverage: **100%**
+* Recordings without any genre information: **0**
+* 25 distinct MusicBrainz artists were processed.
+* 23 / 25 artists had MusicBrainz genres.
+* 66 distinct normalized genres were identified.
+* 141 artist ↔ genre relationships were created.
+
+The two artists without MusicBrainz genres are retained without artificial genre assignment.
+
+#### Schema consistency review
+
+A global dependency audit was performed across the Python source tree, including root scripts, `tools/`, and `tests/`.
+
+Previously identified identifier inconsistencies were corrected, including:
+
+* `track_musicbrainz.mb_recording_id` is the identifier used to reference MusicBrainz recordings from Spotify tracks.
+* MusicBrainz artist-related tables consistently use `artist_id` for their foreign-key relationship to `mb_artists`.
+* `mb_artists.mb_artist_id` remains the primary MusicBrainz artist identifier.
+* `mb_recordings.mb_id` remains the primary MusicBrainz recording identifier.
+
+The dependency audit did not identify references to unknown database tables or invalid qualified column references after the corrections.
+
+The remaining differences between primary-key names and foreign-key names are intentional and do not currently justify a schema-wide rename.
+
+#### Decision
+
+The MusicBrainz genre enrichment and metadata-model validation stage is considered **complete**.
+
+No further schema renaming or broad refactoring will be performed at this stage. The current model is considered sufficiently coherent and validated for continuation of the project.
+
+The dependency audit is retained as a diagnostic/maintenance tool. Its results are considered heuristic because dynamically constructed SQL and identifiers cannot always be detected statically.
+
+SQLite data was modified only by the genre-enrichment implementation; audit and validation scripts do not modify the database.
+
+
 ### Estado de la base de datos
 
 La base local `data/spotify_music.db` contiene actualmente:

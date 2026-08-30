@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 .spotify_cache
 data/
+data/Backups
